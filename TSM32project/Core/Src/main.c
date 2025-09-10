@@ -86,7 +86,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  void TurnOnLED (int num){
+  void setNumberOnClock (int num){
 	  switch (num){
 	  	  case 1:
 	  		  HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET);
@@ -127,7 +127,7 @@ int main(void)
 	  }
   }
 
-  void TurnOffLED (int num){
+  void clearNumberOnClock (int num){
 	  switch (num){
 	  	  case 1:
 	  		  HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
@@ -170,9 +170,10 @@ int main(void)
 
   void ClearAllClock (){
 	  for (int count=0; count <= 11; count++){
-		  TurnOffLED(count);
+		  clearNumberOnClock(count);
 	  }
   }
+
 
   /* USER CODE END 2 */
 
@@ -181,9 +182,13 @@ int main(void)
   while (1)
   {
 	  for (int count=0; count <= 11; count++){
-		  TurnOnLED(count);
+		  setNumberOnClock(count);
 		  HAL_Delay(1000);
 	  }
+	  clearNumberOnClock(6);
+	  HAL_Delay(1000);
+	  clearNumberOnClock(11);
+	  HAL_Delay(1000);
 	  ClearAllClock();
 	  HAL_Delay(2000);
     /* USER CODE END WHILE */
