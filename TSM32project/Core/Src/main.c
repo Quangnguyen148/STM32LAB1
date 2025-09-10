@@ -174,23 +174,41 @@ int main(void)
 	  }
   }
 
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  ClearAllClock();
+  int second = 50, minute = 59, hour = 2;
   while (1)
   {
-	  for (int count=0; count <= 11; count++){
-		  setNumberOnClock(count);
-		  HAL_Delay(1000);
+	  int secPos = second/5;
+	  int preSec = (secPos+11)%12;
+	  int minPos = minute/5;
+	  int preMin = (minPos+11)%12;
+	  int hourPos = hour;
+	  int preHour = (hourPos+11)%12;
+
+	  setNumberOnClock(secPos);
+	  if (minPos != preSec && hourPos != preSec) clearNumberOnClock(preSec);
+
+	  setNumberOnClock(minPos);
+	  if (secPos != preMin && hourPos != preMin)clearNumberOnClock(preMin);
+
+	  setNumberOnClock(hourPos);
+	  if (secPos != preHour && minPos != preHour)clearNumberOnClock(preHour);
+
+	  second++;
+	  if (second > 59){
+		  second = 0;
+		  minute++;
 	  }
-	  clearNumberOnClock(6);
+	  if (minute > 59){
+		  minute = 0;
+		  hour++;
+	  }
+	  if (hour > 11) hour = 0;
 	  HAL_Delay(1000);
-	  clearNumberOnClock(11);
-	  HAL_Delay(1000);
-	  ClearAllClock();
-	  HAL_Delay(2000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
