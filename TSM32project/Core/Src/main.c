@@ -168,6 +168,12 @@ int main(void)
 	  }
   }
 
+  void ClearAllClock (){
+	  for (int count=0; count <= 11; count++){
+		  TurnOffLED(count);
+	  }
+  }
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -178,6 +184,8 @@ int main(void)
 		  TurnOnLED(count);
 		  HAL_Delay(1000);
 	  }
+	  ClearAllClock();
+	  HAL_Delay(2000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
