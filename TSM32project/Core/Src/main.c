@@ -179,7 +179,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   ClearAllClock();
-  int second = 50, minute = 59, hour = 2;
+  int second = 0, minute = 0, hour = 0;
   while (1)
   {
 	  int secPos = second/5;
@@ -208,7 +208,7 @@ int main(void)
 		  hour++;
 	  }
 	  if (hour > 11) hour = 0;
-	  HAL_Delay(1000);
+	  HAL_Delay(5);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

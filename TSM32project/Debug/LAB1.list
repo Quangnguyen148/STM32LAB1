@@ -233,12 +233,12 @@ int main(void)
  8000258:	463b      	mov	r3, r7
  800025a:	469c      	mov	ip, r3
  800025c:	f000 f916 	bl	800048c <ClearAllClock.5460>
-  int second = 50, minute = 59, hour = 2;
- 8000260:	2332      	movs	r3, #50	; 0x32
+  int second = 0, minute = 0, hour = 0;
+ 8000260:	2300      	movs	r3, #0
  8000262:	627b      	str	r3, [r7, #36]	; 0x24
- 8000264:	233b      	movs	r3, #59	; 0x3b
+ 8000264:	2300      	movs	r3, #0
  8000266:	623b      	str	r3, [r7, #32]
- 8000268:	2302      	movs	r3, #2
+ 8000268:	2300      	movs	r3, #0
  800026a:	61fb      	str	r3, [r7, #28]
   while (1)
   {
@@ -395,11 +395,12 @@ int main(void)
  8000380:	dd01      	ble.n	8000386 <main+0x146>
  8000382:	2300      	movs	r3, #0
  8000384:	61fb      	str	r3, [r7, #28]
-	  HAL_Delay(1000);
- 8000386:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 800038a:	f000 f9f5 	bl	8000778 <HAL_Delay>
+	  HAL_Delay(5);
+ 8000386:	2005      	movs	r0, #5
+ 8000388:	f000 f9f6 	bl	8000778 <HAL_Delay>
   {
- 800038e:	e76d      	b.n	800026c <main+0x2c>
+ 800038c:	e76e      	b.n	800026c <main+0x2c>
+ 800038e:	bf00      	nop
  8000390:	66666667 	.word	0x66666667
  8000394:	2aaaaaab 	.word	0x2aaaaaab
 
